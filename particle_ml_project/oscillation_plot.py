@@ -12,20 +12,20 @@ def equation(L, mixing_angle):
 # Generate x values
 L_values = np.linspace(0, 10, 500)  # Generate 100 points from -10 to 10
 
-# Evaluate the equation for y values
-P_values1 = equation(L_values, 0)
-P_values2 = equation(L_values, np.pi/6)
-P_values3 = equation(L_values, np.pi/4)
-P_values4 = equation(L_values, np.pi/3)
-P_values5 = equation(L_values, np.pi)
+# Plots for different mixing angles
+mixing_angle_consts = np.array([0, np.pi/6, np.pi/4, np.pi/3, np.pi])
+mixing_plots = []
+for mixing_angle in mixing_angle_consts:
+    plot_set = equation(L_values, mixing_angle)
+    np.append(mixing_plots, plot_set)
+  
+# Final Plotting
+colours_mixing = ['blue', 'green', 'red', 'orange', 'magenta']
+style_mixing = ['solid', 'solid', 'solid', 'dashed', 'dashed']
+labels_mixing = [r'theta = 0', r'theta = $\pi/6$', r'theta = $\pi/4$', r'theta = $\pi/3$', r'theta = $pi$']
 
-# Plot the equation
-plt.plot(L_values, P_values1, label= r'theta = 0', color = 'blue')
-plt.plot(L_values, P_values2, label= r'theta = $\pi/6$', color = 'green')
-plt.plot(L_values, P_values3, label= r'theta = $\pi/4$', color = 'red')
-plt.plot(L_values, P_values4, label= r'theta = $\pi/3$', color = 'orange', linestyle = 'dashed')
-plt.plot(L_values, P_values5, label= r'theta = $pi$', color = 'magenta', linestyle = 'dashed')
-
+for i, plot in enumerate(mixing_plots):
+    plt.plot(L_values, plot, label=labels_mixing[i], color=colours_mixing[i], linestyle=style_mixing[i])
 
 # Add labels and title
 plt.xlabel('L (km)')
