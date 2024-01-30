@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
-import pathlib as Path
+from pathlib import Path
+import os
 
 # Define the equation
 def equation(L, mixing_angle):
@@ -35,7 +36,10 @@ plt.title('Probability of neutrino flavour oscillation in the two-flavour approx
 plt.legend()
 
 # Saving the plot
-
+dir_path = os.path.join(Path(__file__).parent, "Figures")
+file_path = os.path.join(dir_path, "prob_neutrinostate_oscillation.png")
+os.makedirs(dir_path, exist_ok=True)
+plt.savefig(file_path)
 
 # Show the plot
 plt.show()
