@@ -9,10 +9,10 @@ readme = "README.md"
 python = "^3.12"
 numpy = "^1.26.3"
 
-[virtualenvs]
-create = true
-in-project = true
-
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[virtualenvs]
+create = true
+in-project = true
