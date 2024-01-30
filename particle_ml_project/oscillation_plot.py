@@ -14,16 +14,36 @@ L_values = np.linspace(0, 10, 500)  # Generate 100 points from -10 to 10
 
 # Plots for different mixing angles
 mixing_angle_consts = np.array([0, np.pi/6, np.pi/4, np.pi/3, np.pi])
+colours_mixing = ['blue', 'green', 'red', 'orange', 'magenta']
+style_mixing = ['solid', 'solid', 'solid', 'dashed', 'dashed']
+labels_mixing = [r'$\theta$ = 0', r'$\theta$ = $\pi/6$', r'$\theta$ = $\pi/4$', r'$\theta$ = $\pi/3$', r'$\theta$ = $pi$']
 mixing_plots = []
 for mixing_angle in mixing_angle_consts:
     plot_set = equation(L_values, mixing_angle)
-    np.append(mixing_plots, plot_set)
+    mixing_plots.append(plot_set)
   
-# Final Plotting
+# Plots for different difference in mass
+mixing_angle_consts = np.array([0, 1, 2, 3, 4])
 colours_mixing = ['blue', 'green', 'red', 'orange', 'magenta']
 style_mixing = ['solid', 'solid', 'solid', 'dashed', 'dashed']
-labels_mixing = [r'theta = 0', r'theta = $\pi/6$', r'theta = $\pi/4$', r'theta = $\pi/3$', r'theta = $pi$']
+labels_mixing = [r'$\theta$ = 0', r'$\theta$ = $\pi/6$', r'$\theta$ = $\pi/4$', r'$\theta$ = $\pi/3$', r'$\theta$ = $pi$']
+mixing_plots = []
+for mixing_angle in mixing_angle_consts:
+    plot_set = equation(L_values, mixing_angle)
+    mixing_plots.append(plot_set)
 
+# Plots for different different neutrino energies
+mixing_angle_consts = np.array([0, np.pi/6, np.pi/4, np.pi/3, np.pi])
+colours_mixing = ['blue', 'green', 'red', 'orange', 'magenta']
+style_mixing = ['solid', 'solid', 'solid', 'dashed', 'dashed']
+labels_mixing = [r'$\theta$ = 0', r'$\theta$ = $\pi/6$', r'$\theta$ = $\pi/4$', r'$\theta$ = $\pi/3$', r'$\theta$ = $pi$']
+mixing_plots = []
+for mixing_angle in mixing_angle_consts:
+    plot_set = equation(L_values, mixing_angle)
+    mixing_plots.append(plot_set)
+
+
+# Final Plotting
 for i, plot in enumerate(mixing_plots):
     plt.plot(L_values, plot, label=labels_mixing[i], color=colours_mixing[i], linestyle=style_mixing[i])
 
