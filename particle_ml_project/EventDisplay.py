@@ -12,7 +12,7 @@ import matplotlib.colors as colors
 #      Script to visualize larcv images in hdf5 format
 #               Author: Luis Mora Lepin
 #          luis.moralepin@postgrad.manchester.ac.uk
-# meow
+#
 ###########################################################
 
 
@@ -33,7 +33,7 @@ def SearchID(run,subrun,event,id_list):
             pass
     # fail case
     if (id==0):
-        print("No such event found! Please check that such an event exists.")
+        print("No such event found! Please check that such an event exists. Received:", run, subrun, event)
         print("Displaying event: {}, subrun: {}, run: {}".format(id_list[0][1], id_list[0][2], id_list[0][3]) )
     return id 
 
@@ -115,18 +115,23 @@ def list_entries(dataset, sliced=False, slice_val = 0):
     f = h5py.File(input_file,'r')
     event_id_list = f['eventid']
     
-    # can remove entries from your printed list, as there are many
+    events = []  # Initialize an empty list to store the events
     
     if sliced == True:    
         i = 0
         for element in event_id_list:
             if i > slice_val:
                 break;
-            print("Event: {}, Subrun: {}, Run: {}".format(element[1], element[2], element[3]))
+            events.append((element[1], element[2], element[3]))  # Add the event to the list
             i += 1
     else:
         print("Caution: You are printing every event in the file (there are {}).".format(len(event_id_list)))
         for element in event_id_list:
-            print("Event: {}, Subrun: {}, Run: {}".format(element[1], element[2], element[3]))
+            events.append((element[1], element[2], element[3]))  # Add the event to the list
+
+    return events  # Return the list of events
+
     
-            
+# manual call
+if __name__ == "__main__":
+    EvDisp(9545,190,18492,1,'slim')
