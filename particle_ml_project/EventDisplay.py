@@ -115,19 +115,22 @@ def list_entries(dataset, sliced=False, slice_val = 0):
     f = h5py.File(input_file,'r')
     event_id_list = f['eventid']
     
-    # can remove entries from your printed list, as there are many
+    events = []  # Initialize an empty list to store the events
     
     if sliced == True:    
         i = 0
         for element in event_id_list:
             if i > slice_val:
                 break;
-            print("Event: {}, Subrun: {}, Run: {}".format(element[1], element[2], element[3]))
+            events.append((element[1], element[2], element[3]))  # Add the event to the list
             i += 1
     else:
         print("Caution: You are printing every event in the file (there are {}).".format(len(event_id_list)))
         for element in event_id_list:
-            print("Event: {}, Subrun: {}, Run: {}".format(element[1], element[2], element[3]))
+            events.append((element[1], element[2], element[3]))  # Add the event to the list
+
+    return events  # Return the list of events
+
     
 # manual call
 if __name__ == "__main__":
