@@ -12,7 +12,7 @@ import matplotlib.colors as colors
 #      Script to visualize larcv images in hdf5 format
 #               Author: Luis Mora Lepin
 #          luis.moralepin@postgrad.manchester.ac.uk
-# meow
+#
 ###########################################################
 
 
