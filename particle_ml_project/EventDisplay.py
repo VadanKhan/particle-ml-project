@@ -33,7 +33,7 @@ def SearchID(run,subrun,event,id_list):
             pass
     # fail case
     if (id==0):
-        print("No such event found! Please check that such an event exists.")
+        print("No such event found! Please check that such an event exists. Received:", run, subrun, event)
         print("Displaying event: {}, subrun: {}, run: {}".format(id_list[0][1], id_list[0][2], id_list[0][3]) )
     return id 
 
@@ -129,4 +129,6 @@ def list_entries(dataset, sliced=False, slice_val = 0):
         for element in event_id_list:
             print("Event: {}, Subrun: {}, Run: {}".format(element[1], element[2], element[3]))
     
-            
+# manual call
+if __name__ == "__main__":
+    EvDisp(9545,190,18492,1,'slim')
