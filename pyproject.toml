@@ -17,6 +17,7 @@ scikit-learn = "^1.4.0"
 matplotlib = "^3.8.2"
 ipympl = "^0.9.3"
 h5py = "^3.10.0"
+xgboost = "^2.0.3"
 
 [build-system]
 requires = ["poetry-core"]
